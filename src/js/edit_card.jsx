@@ -203,7 +203,7 @@ export default class editToStinkCoverVizCard extends React.Component {
                 <div>
                   <div className="section-title-text">Fill the form</div>
                   <div className="ui label proto-pull-right">
-                    ToManualScavengerCoverVizCard
+                    toStinkCoverVizCard
                   </div>
                 </div>
                 <JSONSchemaForm schema={this.getSchemaJSON()}
