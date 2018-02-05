@@ -1,0 +1,51 @@
+{
+  "id": "http://example.com/example.json",
+  "type": "object",
+  "definitions": {},
+  "schema": "http://json-schema.org/draft-06/schema#",
+  "properties": {
+    "data": {
+      "$id": "/properties/data",
+      "type": "object",
+      "properties": {
+        "count": {
+          "id": "/properties/data/properties/count",
+          "type": "object",
+          "properties": {
+            "employed_count": {
+              "id": "/properties/data/properties/count/properties/employed_count",
+              "type": "integer",
+              "title": "Number of employed"
+            },
+            "killed_count": {
+              "id": "/properties/data/properties/count/properties/killed_count",
+              "type": "integer",
+              "title": "Number of killed"
+            },
+            "convicted_count": {
+              "id": "/properties/data/properties/count/properties/convicted_count",
+              "type": "integer",
+              "title": "Number of convicted"
+            }
+          }
+        },
+        "banner_image": {
+          "id": "/properties/data/properties/banner_image",
+          "type": "object",
+          "properties": {
+            "desktop": {
+              "id": "/properties/data/properties/banner_image/properties/desktop",
+              "type": "string",
+              "title": "Laptop banner"
+            },
+            "mobile": {
+              "id": "/properties/data/properties/banner_image/properties/mobile",
+              "type": "string",
+              "title": "Mobile banner"
+            }
+          }
+        }
+      }
+    }
+  }
+}
