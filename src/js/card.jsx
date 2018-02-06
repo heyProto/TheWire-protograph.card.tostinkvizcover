@@ -97,13 +97,14 @@ export default class toStinkCoverVizCard extends React.Component {
     } else {
       let data = this.state.dataJSON.data;
 
-      // let employed_count = data.count.employed_count.toString().length,
-      //   killed_count = data.count.killed_count.toString().length,
-      //   convicted_count = data.count.convicted_count.toString().length;
+      let employed_count = data.count.employed_count.toString(),
+        killed_count = data.count.killed_count.toString(),
+        convicted_count = data.count.convicted_count.toString(),
+        employed_arr = [],
+        killed_arr = [],
+        convicted_arr = []
 
-      // for (let i=0; i< employed_count; i++) {
-
-      // }
+      console.log(employed_arr, killed_arr, convicted_arr, "employed_arr")
       return(
         <div className="ms-cover">
           <img src={data.banner_image.desktop}/>
@@ -163,6 +164,28 @@ export default class toStinkCoverVizCard extends React.Component {
         </div>
       )
     }
+  }
+
+  insertZero(count, arr, str) {
+    let len = count.length;
+    for (let i=0; i< len; i++) {
+      switch (len) {
+        case 1:
+          arr.push(0);
+          break;
+        case 2: 
+          arr.push(0);
+          break;
+        case 3:
+          arr.push(0);
+          break;
+        case 4:
+          arr.push(str.toString()[i]);
+          break;
+      }     
+    }
+    console.log(arr, "arr")
+    return arr;
   }
 
   render() {

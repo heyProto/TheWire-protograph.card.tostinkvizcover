@@ -6,6 +6,16 @@
     <title>toStinkCoverVizCard</title>
     <link href="https://fonts.googleapis.com/css?family=Hind" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="card.min.css">
+    <style>
+      #viz_card {
+        min-height: 430px;
+      }
+      @media only screen and (max-width: 500px){
+        #viz_card {
+          min-height: 250px;
+        }
+      }
+    </style>
     <script type="text/javascript">
       var siteId, origin, base_url;
       // Setting variables from environment
@@ -46,7 +56,7 @@
 
   </head>
   <body>
-    <div id="viz_card" style="min-height:250px"></div></br>
+    <div id="viz_card"></div></br>
     <script src="https://cdn.protograph.pykih.com/lib/jquery-3.1.1.min.js"></script>
     <script src = "card.min.js"></script>
     <script type="text/javascript">
