@@ -1,12 +1,12 @@
 {
   "data": {
     "count": {
-      "employed_count": 2137,
-      "killed_count": 414,
-      "convicted_count": 2
+      "employed_count": 2404,
+      "killed_count": 366,
+      "convicted_count": 1
     },
     "banner_image": {
-      "desktop": "https://s3.ap-south-1.amazonaws.com/cdn.protograph/3dcab1e230b429d5a921/banner.png",
+      "desktop": "",
       "mobile": ""
     }
   }

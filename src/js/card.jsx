@@ -58,7 +58,7 @@ export default class toStinkCoverVizCard extends React.Component {
 
   showCounter() {
     setTimeout(function(){
-      $('.single-counter').each(function () {
+      $('.animate-count').each(function () {
         $(this).prop('Counter',0).animate({
           Counter: $(this).text()
         },{
@@ -106,22 +106,24 @@ export default class toStinkCoverVizCard extends React.Component {
       // }
       return(
         <div className="ms-cover">
-          <img src={data.banner_image.desktop} width="1260px;"/>
+          <img src={data.banner_image.desktop}/>
           <div className="employed-counter counter">
-            <div className="single-counter ec-1">2</div>
-            <div className="single-counter ec-2">1</div>
-            <div className="single-counter ec-3">3</div>
-            <div className="single-counter ec-4">7</div>
+            <div className="animate-count single-counter ec-1">2</div>
+            <div className="animate-count single-counter ec-2">4</div>
+            <div className="animate-count single-counter ec-3">0</div>
+            <div className="animate-count single-counter ec-4">4</div>
           </div>
           <div className="killed-counter counter">
-            <div className="single-counter kc-1">4</div>
-            <div className="single-counter kc-2">1</div>
-            <div className="single-counter kc-3">4</div>
+            <div className="animate-count single-counter kc-1">0</div>
+            <div className="animate-count single-counter kc-2">3</div>
+            <div className="animate-count single-counter kc-3">6</div>
+            <div className="animate-count single-counter kc-4">6</div>
           </div>
           <div className="convicted-counter counter">
-            <div className="single-counter cc-1">0</div>
-            <div className="single-counter cc-2">0</div>
-            <div className="single-counter cc-3">2</div>
+            <div className="animate-count single-counter cc-1">0</div>
+            <div className="animate-count single-counter cc-2">0</div>
+            <div className="animate-count single-counter cc-3">0</div>
+            <div className="animate-count single-counter cc-4">2</div>
           </div>
         </div>
       )
@@ -134,20 +136,29 @@ export default class toStinkCoverVizCard extends React.Component {
     } else {
       let data = this.state.dataJSON.data;
       return(
-        <div className="ms-cover">
-          <div className="banner-image-div">
-            <img src={data.banner_image.desktop}/>
-          </div>
-          <div className="employed-counter counter">
-            <div className="single-counter ec-1">2</div>
-            <div className="single-counter ec-2">1</div>
-            <div className="single-counter ec-3">3</div>
-            <div className="single-counter ec-4">7</div>
-          </div>
-          <div className="killed-counter counter">
-            <div className="single-counter kc-1">4</div>
-            <div className="single-counter kc-2">1</div>
-            <div className="single-counter kc-3">4</div>
+        <div className="ms-cover-mobile">
+          <div className="banner-image">
+            <img src={data.banner_image.desktop} height="250px"/>
+          </div>     
+          <div className="counter-parent">     
+            <div className="m-employed-counter counter">
+              <div className="animate-count m-single-counter m-ec-1">2</div>
+              <div className="animate-count m-single-counter m-ec-2">4</div>
+              <div className="animate-count m-single-counter m-ec-3">0</div>
+              <div className="animate-count m-single-counter m-ec-4">4</div>
+            </div>
+            <div className="m-killed-counter counter">
+              <div className="animate-count m-single-counter m-kc-1">0</div>
+              <div className="animate-count m-single-counter m-kc-2">3</div>
+              <div className="animate-count m-single-counter m-kc-3">6</div>
+              <div className="animate-count m-single-counter m-kc-4">6</div>
+            </div>
+            <div className="m-convicted-counter counter">
+              <div className="animate-count m-single-counter m-cc-1">0</div>
+              <div className="animate-count m-single-counter m-cc-2">0</div>
+              <div className="animate-count m-single-counter m-cc-3">0</div>
+              <div className="animate-count m-single-counter m-cc-4">2</div>
+            </div>
           </div>
         </div>
       )
