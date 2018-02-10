@@ -132,6 +132,18 @@ body {
     top: 2px;
     left: 282px;
   }
+  .employed-counter{
+    top: 103px;
+    left: 60px;
+  }
+  .killed-counter{
+    top: 103px;
+    left: 128px;
+  }
+  .convicted-counter{
+    top: 103px;
+    left: 320px;
+  }
   .ms-cover{
     width: 100vw;
     height: 250px;
@@ -142,7 +154,7 @@ body {
     height: 250px;
     overflow: hidden;
   }
-  .banner-image{
+  .banner-image, .col16-banner{
     width: auto;
     height: 250px;
     left: 50%;
@@ -168,7 +180,7 @@ body {
     position: relative;
     margin-top: 100px;
   }
-  /*.ec-1{left: 13px;}
+  .ec-1{left: 13px;}
   .ec-2{left: 31px;}
   .ec-3{left: 47px;}
   .ec-4{left: 65px;}
@@ -181,5 +193,5 @@ body {
   .cc-1{left: -78px;}
   .cc-2{left: -59px;}
   .cc-3{left: -42px;}
-  .cc-4{left: -25px;}*/
+  .cc-4{left: -25px;}
 } 

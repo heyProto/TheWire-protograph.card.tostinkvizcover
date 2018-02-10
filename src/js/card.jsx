@@ -107,7 +107,7 @@ export default class toStinkCoverVizCard extends React.Component {
       console.log(employed_arr, killed_arr, convicted_arr, "employed_arr")
       return(
         <div className="ms-cover">
-          <img src={data.banner_image.desktop}/>
+          <img className="col16-banner" src={data.banner_image.desktop}/>
           <div className="employed-counter counter">
             <div className="animate-count single-counter ec-1">2</div>
             <div className="animate-count single-counter ec-2">4</div>
