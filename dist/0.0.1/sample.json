@@ -6,8 +6,8 @@
       "convicted_count": 1
     },
     "banner_image": {
-      "desktop": "banner.png",
-      "mobile": "banner.png"
+      "desktop": "banner.jpg",
+      "mobile": "banner-mobile.jpg"
     }
   }
 }

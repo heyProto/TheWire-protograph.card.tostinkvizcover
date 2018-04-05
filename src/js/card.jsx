@@ -113,22 +113,25 @@ export default class toStinkCoverVizCard extends React.Component {
         <div className="ms-cover">
           <img className="col16-banner" src={data.banner_image.desktop}/>
           <div className="employed-counter counter">
-            <div className="animate-count single-counter ec-1">{employed[0]}</div>
-            <div className="animate-count single-counter ec-2">{employed[1]}</div>
-            <div className="animate-count single-counter ec-3">{employed[2]}</div>
-            <div className="animate-count single-counter ec-4">{employed[3]}</div>
+            <div className="animate-count single-counter ec-0">{employed[0]}</div>
+            <div className="animate-count single-counter ec-1">{employed[1]}</div>
+            <div className="animate-count single-counter ec-2">{employed[2]}</div>
+            <div className="animate-count single-counter ec-3">{employed[3]}</div>
+            <div className="animate-count single-counter ec-4">{employed[4]}</div>
           </div>
           <div className="killed-counter counter">
-            <div className="animate-count single-counter kc-1">{killed[0]}</div>
-            <div className="animate-count single-counter kc-2">{killed[1]}</div>
-            <div className="animate-count single-counter kc-3">{killed[2]}</div>
-            <div className="animate-count single-counter kc-4">{killed[3]}</div>
+            <div className="animate-count single-counter kc-0">{killed[0]}</div>
+            <div className="animate-count single-counter kc-1">{killed[1]}</div>
+            <div className="animate-count single-counter kc-2">{killed[2]}</div>
+            <div className="animate-count single-counter kc-3">{killed[3]}</div>
+            <div className="animate-count single-counter kc-4">{killed[4]}</div>
           </div>
           <div className="convicted-counter counter">
-            <div className="animate-count single-counter cc-1">{convicted[0]}</div>
-            <div className="animate-count single-counter cc-2">{convicted[1]}</div>
-            <div className="animate-count single-counter cc-3">{convicted[2]}</div>
-            <div className="animate-count single-counter cc-4">{convicted[3]}</div>
+            <div className="animate-count single-counter cc-0">{convicted[0]}</div>
+            <div className="animate-count single-counter cc-1">{convicted[1]}</div>
+            <div className="animate-count single-counter cc-2">{convicted[2]}</div>
+            <div className="animate-count single-counter cc-3">{convicted[3]}</div>
+            <div className="animate-count single-counter cc-4">{convicted[4]}</div>
           </div>
         </div>
       )
@@ -154,26 +157,29 @@ export default class toStinkCoverVizCard extends React.Component {
       return(
         <div className="ms-cover-mobile">
           <div className="banner-image">
-            <img src={data.banner_image.mobile} height="250px"/>
+            <img src={data.banner_image.mobile} height="250px" width="100%"/>
           </div>     
           <div className="counter-parent">     
             <div className="m-employed-counter counter">
-              <div className="animate-count m-single-counter m-ec-1">{employed[0]}</div>
-              <div className="animate-count m-single-counter m-ec-2">{employed[1]}</div>
-              <div className="animate-count m-single-counter m-ec-3">{employed[2]}</div>
-              <div className="animate-count m-single-counter m-ec-4">{employed[3]}</div>
+              <div className="animate-count m-single-counter m-ec-0">{employed[0]}</div>
+              <div className="animate-count m-single-counter m-ec-1">{employed[1]}</div>
+              <div className="animate-count m-single-counter m-ec-2">{employed[2]}</div>
+              <div className="animate-count m-single-counter m-ec-3">{employed[3]}</div>
+              <div className="animate-count m-single-counter m-ec-4">{employed[4]}</div>
             </div>
             <div className="m-killed-counter counter">
-              <div className="animate-count m-single-counter m-kc-1">{killed[0]}</div>
-              <div className="animate-count m-single-counter m-kc-2">{killed[1]}</div>
-              <div className="animate-count m-single-counter m-kc-3">{killed[2]}</div>
-              <div className="animate-count m-single-counter m-kc-4">{killed[3]}</div>
+              <div className="animate-count m-single-counter m-kc-0">{killed[0]}</div>
+              <div className="animate-count m-single-counter m-kc-1">{killed[1]}</div>
+              <div className="animate-count m-single-counter m-kc-2">{killed[2]}</div>
+              <div className="animate-count m-single-counter m-kc-3">{killed[3]}</div>
+              <div className="animate-count m-single-counter m-kc-4">{killed[4]}</div>
             </div>
             <div className="m-convicted-counter counter">
-              <div className="animate-count m-single-counter m-cc-1">{convicted[0]}</div>
-              <div className="animate-count m-single-counter m-cc-2">{convicted[1]}</div>
-              <div className="animate-count m-single-counter m-cc-3">{convicted[2]}</div>
-              <div className="animate-count m-single-counter m-cc-4">{convicted[3]}</div>
+              <div className="animate-count m-single-counter m-cc-0">{convicted[0]}</div>
+              <div className="animate-count m-single-counter m-cc-1">{convicted[1]}</div>
+              <div className="animate-count m-single-counter m-cc-2">{convicted[2]}</div>
+              <div className="animate-count m-single-counter m-cc-3">{convicted[3]}</div>
+              <div className="animate-count m-single-counter m-cc-4">{convicted[4]}</div>
             </div>
           </div>
         </div>
@@ -185,15 +191,18 @@ export default class toStinkCoverVizCard extends React.Component {
     let len = str.length;
     switch (len) {
       case 1:
-        arr.unshift(0, 0, 0);
+        arr.unshift(0, 0, 0, 0);
         break;
       case 2: 
-        arr.unshift(0, 0);
+        arr.unshift(0, 0, 0);
         break;
       case 3:
-        arr.unshift(0);
+        arr.unshift(0, 0);
         break;
       case 4:
+        arr.unshift(0);
+        break;
+      case 5:
         break;
     }
     for (let i=0; i< len; i++) {
