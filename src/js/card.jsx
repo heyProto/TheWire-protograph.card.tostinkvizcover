@@ -191,16 +191,16 @@ export default class toStinkCoverVizCard extends React.Component {
     let len = str.length;
     switch (len) {
       case 1:
-        arr.unshift(0, 0, 0, 0);
+        arr.unshift(" "," "," "," ");
         break;
       case 2: 
-        arr.unshift(0, 0, 0);
+        arr.unshift(" "," ", " ");
         break;
       case 3:
-        arr.unshift(0, 0);
+        arr.unshift(" ", " ");
         break;
       case 4:
-        arr.unshift(0);
+        arr.unshift(" ");
         break;
       case 5:
         break;
