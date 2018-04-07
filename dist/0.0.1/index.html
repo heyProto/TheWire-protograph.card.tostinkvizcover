@@ -5,30 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>toStinkCoverVizCard</title>
     <link rel="stylesheet" type="text/css" href="card.min.css">
-    <script type="text/javascript">
-      var siteId, origin, base_url;
-      // Setting variables from environment
-      origin = window.location.origin;
-      if (origin == 'https://s3.ap-south-1.amazonaws.com') {
-        let bucket_name = window.location.pathname.split('/')['1'];
-        base_url = origin + "/" + bucket_name;
-        switch(bucket_name){
-          case "cdn.protograph":
-            siteId = '1';
-            break;
-          case "staging.cdn.protograph":
-            siteId = '2';
-            break;
-        }
-      } else if (origin === 'https://dkqrqc7q64awx.cloudfront.net') {
-        siteId = '2';
-        base_url = origin;
-      } else {
-        siteId = '1';
-        base_url = origin;
-      }
-
-    </script>
   </head>
   <body style="margin:0px">
     <div id="viz_card"></div>
@@ -37,6 +13,7 @@
     <script src = "card.min.js"></script>
     <script type="text/javascript">
     var x = new ProtoGraph.Card.toStinkCoverVizCard();
+      
     function findGetParameter(parameterName) {
       var result = null,
         tmp = [],
@@ -53,26 +30,37 @@
     }
 
     let view_cast_id = findGetParameter('view_cast_id'),
-      schema_id = findGetParameter('schema_id'),
-      schema_base_url = "https://cdn.protograph.pykih.com";
+      base_url = findGetParameter('base_url') || "https://cdn.protograph.pykih.com";
 
-    var ReceiverConsumer = Oasis.Consumer.extend({
+      var ReceiverConsumer = Oasis.Consumer.extend({
       requests: {
-        receive: function(mode) {
-          if(typeof (view_cast_id) !== 'undefined' && typeof(schema_id) !== 'undefined'){
+        receive: function(mode, options) {
+
+          if(typeof (view_cast_id) !== 'undefined'){
+
             var that = this,
-            data_base_path = base_url + "/" + view_cast_id,
-            schema_base_path = schema_base_url + "/" + schema_id;
+              data_base_path = base_url + "/" + view_cast_id,
+              params;
 
             document.querySelector('#viz_card').style.minHeight = (mode == "col16") ? "430px" : "250px"
 
-            x.init({
+            params = {
               selector: document.querySelector('#viz_card'),
               data_url: data_base_path + "/data.json",
-              schema_url: schema_base_path + "/schema.json",
-              configuration_url: data_base_path + "/view_cast.json",
-              configuration_schema_url: 'configuration_schema.json'
-            })
+              domain: domain_name,
+              onClickCallback: function () {
+                let h = x.getData().height,
+                  w = x.getData().width;
+                that.send('resize_frame', { width: w, height: h })
+              }
+            }
+
+            if (options && options.headerJSON) {
+              params['site_configs'] = options.headerJSON;
+            } else {
+              params['site_config_url'] = base_url + '/header.json'
+            }
+            x.init(params);
             renderWithMode(mode);
           }
         }
@@ -108,7 +96,9 @@
       }
     });
 
+
     function renderWithMode(mode) {
+      console.log(mode);
       switch(mode){
         case "col16":
           x.renderCol16();

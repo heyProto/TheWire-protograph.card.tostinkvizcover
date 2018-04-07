@@ -104,7 +104,9 @@ export default class editToStinkCoverVizCard extends React.Component {
 
   renderSEO() {
     let d = this.state.dataJSON.data;
-    let seo_blockquote = '<blockquote>' + d.count.employed + d.count.killed + d.count.convicted +'</blockquote>'
+    console.log(d.count);
+    
+    let seo_blockquote = `<blockquote><p>Employed: ${d.count.employed_count}</p><p>Killed: ${d.count.killed_count}</p><p> Convicted: ${d.count.convicted_count}</p></blockquote>`
     return seo_blockquote;
   }
 
