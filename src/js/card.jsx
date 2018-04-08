@@ -11,22 +11,12 @@ export default class toStinkCoverVizCard extends React.Component {
       fetchingData: true,
       dataJSON: {},
       schemaJSON: undefined,
-      optionalConfigJSON: {},
-      optionalConfigSchemaJSON: undefined,
       languageTexts: undefined
     };
 
     if (this.props.dataJSON) {
       stateVar.fetchingData = false;
       stateVar.dataJSON = this.props.dataJSON;
-    }
-
-    if (this.props.optionalConfigJSON) {
-      stateVar.optionalConfigJSON = this.props.optionalConfigJSON;
-    }
-
-    if (this.props.optionalConfigSchemaJSON) {
-      stateVar.optionalConfigSchemaJSON = this.props.optionalConfigSchemaJSON;
     }
 
     this.state = stateVar;
@@ -39,32 +29,29 @@ export default class toStinkCoverVizCard extends React.Component {
   componentDidMount() {
     if (this.state.fetchingData) {
       axios.all([
-        axios.get(this.props.dataURL),
-        axios.get(this.props.optionalConfigURL),
-        axios.get(this.props.optionalConfigSchemaURL)
+        axios.get(this.props.dataURL)
       ])
-      .then(axios.spread((card, opt_config, opt_config_schema) => {
+      .then(axios.spread((card) => {
         this.setState({
           fetchingData: false,
           dataJSON: card.data,
-          optionalConfigJSON: opt_config.data,
-          optionalConfigSchemaJSON: opt_config_schema.data,
           languageTexts: this.getLanguageTexts(card.data.data.language)
         });
       }));
-      this.showCounter();
+      // this.showCounter();
     }
   }
 
   showCounter() {
     setTimeout(function(){
-      $('.animate-count').each(function () {
+      $('.animate-count2').each(function () {
         $(this).prop('Counter',0).animate({
           Counter: $(this).text()
         },{
             duration: 2000,
             easing: 'swing',
             step: function (now) {
+              console.log(now, "========")
               $(this).text(Math.ceil(now));
             }
         });
@@ -107,13 +94,11 @@ export default class toStinkCoverVizCard extends React.Component {
       let employed = this.insertZero(employed_count, employed_arr),
         killed = this.insertZero(killed_count, killed_arr),
         convicted = this.insertZero(convicted_count, convicted_arr)
-
-      console.log(employed, killed,convicted, "employed_arr")
       return(
         <div className="ms-cover">
           <img className="col16-banner" src={data.banner_image.desktop}/>
           <div className="employed-counter counter">
-            <div className="animate-count single-counter ec-0">{employed[0]}</div>
+            <div className="animate-count2 single-counter ec-0">{employed[0]}</div>
             <div className="animate-count single-counter ec-1">{employed[1]}</div>
             <div className="animate-count single-counter ec-2">{employed[2]}</div>
             <div className="animate-count single-counter ec-3">{employed[3]}</div>
@@ -158,8 +143,8 @@ export default class toStinkCoverVizCard extends React.Component {
         <div className="ms-cover-mobile">
           <div className="banner-image">
             <img src={data.banner_image.mobile} height="250px" width="100%"/>
-          </div>     
-          <div className="counter-parent">     
+          </div>
+          <div className="counter-parent">
             <div className="m-employed-counter counter">
               <div className="animate-count m-single-counter m-ec-0">{employed[0]}</div>
               <div className="animate-count m-single-counter m-ec-1">{employed[1]}</div>
@@ -191,16 +176,16 @@ export default class toStinkCoverVizCard extends React.Component {
     let len = str.length;
     switch (len) {
       case 1:
-        arr.unshift(" "," "," "," ");
+        arr.unshift("","","","");
         break;
-      case 2: 
-        arr.unshift(" "," ", " ");
+      case 2:
+        arr.unshift("","", "");
         break;
       case 3:
-        arr.unshift(" ", " ");
+        arr.unshift("", "");
         break;
       case 4:
-        arr.unshift(" ");
+        arr.unshift("");
         break;
       case 5:
         break;
