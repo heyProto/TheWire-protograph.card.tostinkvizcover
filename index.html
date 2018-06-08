@@ -1,29 +1,33 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset = "UTF-8">
+
+<head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>toStinkCoverVizCard</title>
     <link href="https://fonts.googleapis.com/css?family=Sarala" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="./src/css/styles.css">
-  </head>
-  <body>
+</head>
+
+<body>
     <style>
-      .test-card {
-        /*margin: 10px 20px;*/
-      }
+        .test-card {
+            /*margin: 10px 20px;*/
+        }
     </style>
     <div id="card" class="test-card"></div>
     <script src="./lib/js/jquery-3.1.1.min.js"></script>
-    <script src = "./dist/0.0.1/card.min.js"></script>
+    <script src="./dist/0.0.1/card.min.js"></script>
     <script type="text/javascript">
-    var x = new ProtoGraph.Card.toStinkCoverVizCard();
-    x.init({
-      selector: document.querySelector('#card'),
-      data_url: "dist/0.0.1/sample.json"
-    });
-    x.renderCol4();
-    // x.renderCol16();
+        var x = new ProtoGraph.Card.toStinkCoverVizCard();
+        x.init({
+            selector: document.querySelector('#card'),
+            data_url: "dist/0.0.1/sample.json",
+            site_config_url: 'dist/0.0.1/site.json'
+        });
+        x.renderCol4();
+        // x.renderCol16();
     </script>
-  </body>
+</body>
+
 </html>

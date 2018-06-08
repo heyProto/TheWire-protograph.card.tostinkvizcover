@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
+import { render } from 'react-dom';
+import { all as axiosAll, get as axiosGet, spread as axiosSpread } from 'axios';
 import Card from './card.jsx';
 import JSONSchemaForm from '../../lib/js/react-jsonschema-form';
 
@@ -14,8 +14,6 @@ export default class editToStinkCoverVizCard extends React.Component {
       publishing: false,
       schemaJSON: undefined,
       fetchingData: true,
-      optionalConfigJSON: {},
-      optionalConfigSchemaJSON: undefined,
       uiSchemaJSON: {}
     }
     this.toggleMode = this.toggleMode.bind(this);
@@ -26,8 +24,6 @@ export default class editToStinkCoverVizCard extends React.Component {
       step: this.state.step,
       dataJSON: this.state.dataJSON,
       schemaJSON: this.state.schemaJSON,
-      optionalConfigJSON: this.state.optionalConfigJSON,
-      optionalConfigSchemaJSON: this.state.optionalConfigSchemaJSON
     }
     getDataObj["name"] = "The Stink Cover Viz Card";
     // getDataObj["name"] = getDataObj.dataJSON.data.title_and_hint.title.substr(0,225); // Reduces the name to ensure the slug does not get too long
@@ -37,20 +33,18 @@ export default class editToStinkCoverVizCard extends React.Component {
   componentDidMount() {
     // get sample json data based on type i.e string or object.
     if (this.state.fetchingData){
-      axios.all([
-        axios.get(this.props.dataURL),
-        axios.get(this.props.schemaURL),
-        axios.get(this.props.optionalConfigURL),
-        axios.get(this.props.optionalConfigSchemaURL),
-        axios.get(this.props.uiSchemaURL)
+      axiosAll([
+        axiosGet(this.props.dataURL),
+        axiosGet(this.props.schemaURL),
+        axiosGet(this.props.siteConfigURL),
+        axiosGet(this.props.uiSchemaURL)
       ])
-      .then(axios.spread((card, schema, opt_config, opt_config_schema, uiSchema) => {
+      .then(axiosSpread((card, schema, site_config, uiSchema) => {
         let stateVars = {
           fetchingData: false,
           dataJSON: card.data,
           schemaJSON: schema.data,
-          optionalConfigJSON: opt_config.data,
-          optionalConfigSchemaJSON: opt_config_schema.data,
+          siteConfigs: site_config.data,
           uiSchemaJSON: uiSchema.data
         }
         this.setState(stateVars);
@@ -241,8 +235,7 @@ export default class editToStinkCoverVizCard extends React.Component {
                     mode={this.state.mode}
                     dataJSON={this.state.dataJSON}
                     schemaJSON={this.state.schemaJSON}
-                    optionalConfigJSON={this.state.optionalConfigJSON}
-                    optionalConfigSchemaJSON={this.state.optionalConfigSchemaJSON}
+                    siteConfigs={this.state.siteConfigs}
                   />
                 </div>
               </div>

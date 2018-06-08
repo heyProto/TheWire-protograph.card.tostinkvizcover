@@ -1,6 +1,6 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import axios from 'axios';
+import { render } from 'react-dom';
+import { all as axiosAll, get as axiosGet, spread as axiosSpread } from 'axios';
 
 export default class toStinkCoverVizCard extends React.Component {
 
@@ -10,13 +10,16 @@ export default class toStinkCoverVizCard extends React.Component {
     let stateVar = {
       fetchingData: true,
       dataJSON: {},
-      schemaJSON: undefined,
       languageTexts: undefined
     };
 
     if (this.props.dataJSON) {
       stateVar.fetchingData = false;
       stateVar.dataJSON = this.props.dataJSON;
+    }
+
+    if (this.props.siteConfigs) {
+      stateVar.siteConfigs = this.props.siteConfigs;
     }
 
     this.state = stateVar;
@@ -28,14 +31,16 @@ export default class toStinkCoverVizCard extends React.Component {
 
   componentDidMount() {
     if (this.state.fetchingData) {
-      axios.all([
-        axios.get(this.props.dataURL)
+      axiosAll([
+        axiosGet(this.props.dataURL),
+        axiosGet(this.props.siteConfigURL)
       ])
-      .then(axios.spread((card) => {
+      .then(axiosSpread((card,site_config) => {
         this.setState({
           fetchingData: false,
           dataJSON: card.data,
-          languageTexts: this.getLanguageTexts(card.data.data.language)
+          languageTexts: this.getLanguageTexts(card.data.data.language),
+          siteConfigs: site_config ? site_config.data : this.state.siteConfigs
         });
       }));
       // this.showCounter();
