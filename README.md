@@ -1,29 +1,9 @@
-# README #
+# ProtoGraph.Card.toStinkVizCover
 
-This README would normally document whatever steps are necessary to get your application up and running.
+Manual scavenging cover card
 
-### What is this repository for? ###
-
-* Quick summary
-* Version
-* [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
-
-### How do I get set up? ###
-
-* Summary of set up
-* Configuration
-* Dependencies
-* Database configuration
-* How to run tests
-* Deployment instructions
-
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
-
-### Who do I talk to? ###
-
-* Repo owner or admin
-* Other community or team contact
+## Installation steps:
+1) sudo apt-get install build-essential
+2) rm package-lock.json && rm -rf node_modules && rm -rf ~/.node-gyp
+3) npm i
+4) npm start
